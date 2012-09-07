@@ -7,7 +7,7 @@ if defined?(DataMapper)
 end
 
 LOAD_MODULES_ROUTES = lambda do
-  class Sinforum < Sinatra::Base
+  class TenCard < Sinatra::Base
     @@mod = "auth"
 
     def haml_mod(view, options={})

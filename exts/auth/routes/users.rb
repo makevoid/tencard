@@ -1,4 +1,4 @@
-class Sinforum < Sinatra::Base
+class TenCard < Sinatra::Base
 
   get "/users" do
     @users = User.all

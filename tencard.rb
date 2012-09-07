@@ -5,6 +5,11 @@ require "#{path}/config/env.rb"
 class TenCard < Sinatra::Base
   include Voidtools::Sinatra::ViewHelpers
 
+  @@path = File.expand_path '../', __FILE__
+
+  require "#{@@path}/lib/form_helpers"
+  include FormHelpers
+
   def partial(name, value)
     locals = if value.is_a? Hash
       value
@@ -14,6 +19,18 @@ class TenCard < Sinatra::Base
     end
     haml "_#{name}".to_sym, locals: locals
   end
+
+  # flash messages
+
+  def flash
+    @@flashes ||= {}
+  end
+
+  after do
+    @@flashes = {}
+  end
+
 end
 
 require_all "#{path}/routes"
+LOAD_MODULES_ROUTES.call

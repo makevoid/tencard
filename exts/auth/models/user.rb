@@ -1,7 +1,7 @@
 class User
   include DataMapper::Resource
 
-  ROLES = [ :guest, :member, :admin ]
+  ROLES = [ :guest, :member, :shop, :admin ]
 
 
   property :id,         Serial
@@ -9,8 +9,11 @@ class User
   property :role,       Enum[*ROLES], default: :guest
   property :password,   String, required: true, length: 5..50
   property :salt,       String
-  property :diablo_id,  String
+  property :card_code,  String
+  property :address,  String
+  property :email,  String
 
+  has n, :purchases
 
   default_scope(:default).update order: :id.desc
 
@@ -23,6 +26,22 @@ class User
   # attributes
 
   # filters
+
+  def self.guests
+    all role: "guest"
+  end
+
+  def self.members
+    all role: "member"
+  end
+
+  def self.shops
+    all role: "shop"
+  end
+
+  def self.admins
+    all role: "admin"
+  end
 
   # actions
 

@@ -1,4 +1,4 @@
-class Sinforum < Sinatra::Base
+class TenCard < Sinatra::Base
 
   enable :sessions
   use Rack::Session::Cookie
@@ -30,6 +30,10 @@ class Sinforum < Sinatra::Base
 
   def admin?
     current_user && current_user.admin?
+  end
+
+  def shop?
+    current_user && (admin? || current_user.shop?)
   end
 
   def member?

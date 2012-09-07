@@ -1,31 +1,35 @@
 %html
   %head
-    %title DiscountCard
+    %title 10Card
     %link{ rel: "stylesheet", href: "/css/main.css" }
   %body
     #container
       %header
-        %h1 DiscountCard
-      %nav
-        - link_to "Use Card",         "/"
-        - link_to "Users",            "/users"
-        - link_to "Register a User",  "/users/new"
         .status
           - if logged_in?
-            .user_name
-              %a{ href: "/users/#{current_user.id}" }= current_user.username
+            %span Logged as:
+            %a{ href: "/users/#{current_user.id}" }= current_user.username
             %form{ action: "/logout", method: "post" }
               %input.btn{ type: "submit", value: "Logout" }
           - else
             %a.btn{ href: "/login" } Login
-            %br
-            %p#register
-              or
-              %a{ href: "/register" } Register
+            or
+            %a.btn{ href: "/register" } Register
+        .clear
+        %h1
+          - link_to "10Card", "/"
+
+      %nav
+        - link_to "Home",         "/"
+        - if shop?
+          - link_to "Nuovo Acquisto",   "/purchases/new"
+          - link_to "Register a User",  "/register"
+          - link_to "Acquisti",         "/purchases"
+        - if admin?
+          - link_to "Users",            "/users"
+          - link_to "Shops (admin)",    "/shops_admin"
+        - link_to "Shops",              "/shops"
+
         %h1.logo
-      %aside
-        %p
-          Logged in as
-          %a{ href: "" } Playground
       %section.content= yield
     %script{ type: "text/javascript", src: "/js/app.js" }

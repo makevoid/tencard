@@ -9,19 +9,13 @@
     %nav.inpage
       - link_to "Edit profile", "/users/#{@user.id}/edit", class: "btn"
 
-  .role
-    = @user.role
-
-  .avatar
-    = @user.avatar_image
+  .card_info
+    Card: #{@user.card_code}
 
   %div
 
-    .signature
-      = markup @user.signature
 
-
-    - if File.exist? "#{Sinforum.root}/views/_ext_user.haml"
+    - if File.exist? "#{TenCard.root}/views/_ext_user.haml"
       = partial :ext_user
 
     .clear

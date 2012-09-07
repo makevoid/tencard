@@ -1,3 +1,5 @@
 %h1 Register Card
 
-%
+%form{ action: "/purchases", method: "post" }
+  - input @user, :username
+  - submit "Registra"

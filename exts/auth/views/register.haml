@@ -4,6 +4,8 @@
 
 %form.new_form{ action: "/users", method: "post" }
   - input @user, :username
+  - input @user, :email
+  - input @user, :address
   - input @user, :password, type: "password"
   - input @user, :password_confirmation, type: "password", label: "Confirm password"
   - submit "Register"

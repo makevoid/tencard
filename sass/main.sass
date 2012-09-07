@@ -1,2 +1,115 @@
+=radius($rad)
+  -moz-border-radius: $rad
+  -o-border-radius: $rad
+  -webkit-border-radius: $rad
+  border-radius: $rad
+
+//
+
+*
+  margin: 0
+  padding: 0
+  border: 0
+
+a
+  text-decoration: none
+
+ul
+  list-style-type: none
+
+.clear
+  clear: both
+
+$content_w: 85%
+
+$main: #90B // purple
+$main: #08D // blue
+$main: #290 // green
+$main: #E20 // red
+$alt: #FFF
+
+//
+
+html, body
+  height: 100%
+
 body
   background: #EEE
+  background: -webkit-linear-gradient(top, #FFF, #AAA)
+  background: -moz-linear-gradient(top, #FFF, #AAA)
+  background: linear-gradient(top, #FFF, #AAA) #EEE
+  font-family: Georgia, Helvetica, Arial
+
+p
+  margin: 3px 0 5px
+
+a
+  color: $main
+a:hover
+  color: $main - #444
+
+.content
+  width: $content_w
+  margin: 20px auto 30px
+
+header
+  width: $content_w
+  margin: 0 auto 7px
+
+h1, h1 a
+  color: $main
+
+.btn, .button, input[type='submit']
+  background: $main
+  color: $alt
+  border-radius: 10px
+  padding: 1px 7px 2px
+  border: 2px solid $main
+  &:hover
+    color: $alt
+    background: $main + #444
+
+nav
+  background: $main
+  padding: 0 (100% - $content_w) / 2
+  a
+    color: $alt
+    margin: 0 2% 0 0
+    padding: 4px 4px
+    display: inline-block
+  a:hover
+    color: $alt
+    background: $main + #333
+
+.status
+  float: right
+  margin: 4px 0 0
+  span
+    font-size: 0.85em
+  form
+    display: inline-block
+    font-size: 0.8em
+
+// forms
+
+label
+  font-size: 0.85em
+  font-weight: bold
+  margin: 0 0 4px
+  display: block
+
+input, textarea
+  font-size: 1.1em
+  display: block
+  margin: 0 0 15px
+  padding: 2px 5px
+  width: 30%
+
+input[type='submit']
+  width: auto
+
+textarea
+  height: 400px
+
+.submit
+  clear: right

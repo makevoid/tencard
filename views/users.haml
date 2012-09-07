@@ -2,6 +2,10 @@
 
 %p Carte registrate:
 
-%ul
-  - User.all.each do |user|
+%table{ cellspacing: 0 }
+  %tr
+    %th Nome
+    %th Carta
+
+  - User.guests.each do |user|
     = partial :user, user

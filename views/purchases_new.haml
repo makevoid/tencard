@@ -1,0 +1,8 @@
+%h1 Nuovo acquisto
+
+
+%form{ action: "/purchases", method: "post" }
+  - input @purchase, :amount
+  - input @purchase, :card_code
+  - input @purchase, :notes
+  - submit "Registra"
