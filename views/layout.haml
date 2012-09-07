@@ -1,0 +1,31 @@
+%html
+  %head
+    %title DiscountCard
+    %link{ rel: "stylesheet", href: "/css/main.css" }
+  %body
+    #container
+      %header
+        %h1 DiscountCard
+      %nav
+        - link_to "Use Card",         "/"
+        - link_to "Users",            "/users"
+        - link_to "Register a User",  "/users/new"
+        .status
+          - if logged_in?
+            .user_name
+              %a{ href: "/users/#{current_user.id}" }= current_user.username
+            %form{ action: "/logout", method: "post" }
+              %input.btn{ type: "submit", value: "Logout" }
+          - else
+            %a.btn{ href: "/login" } Login
+            %br
+            %p#register
+              or
+              %a{ href: "/register" } Register
+        %h1.logo
+      %aside
+        %p
+          Logged in as
+          %a{ href: "" } Playground
+      %section.content= yield
+    %script{ type: "text/javascript", src: "/js/app.js" }
