@@ -1,11 +1,11 @@
 %h1 Shops
 
-%p Negozi che aderiscono al servizio
+%p Qua puoi trovare tutte le attivita' che fanno parte del circuito 10Card:
 
 %table{ cellspacing: 0 }
-  %tr
-    %th Nome
 
   - User.shops.each do |user|
     %tr
-      %td= user.username
+      %td
+        - link_to user.name, "/shops/#{user.id}"
+      %td= user.address

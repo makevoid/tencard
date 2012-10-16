@@ -1,0 +1,21 @@
+%h1= @shop.name
+
+- if admin?
+  %p
+    %span Incassi:
+    = euro @shop.sales_amount
+  %p
+    %span num.Vendite:
+    = @shop.sales_count
+  %p
+    %span username:
+    - link_to @shop.username, "/users/#{@shop.id}"
+
+%p
+  %span Indirizzo:
+  = @shop.address
+
+- if @purchases
+  %section.purchases
+    %h1 Vendite
+    = partial :purchases

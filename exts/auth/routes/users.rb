@@ -7,6 +7,7 @@ class TenCard < Sinatra::Base
 
   get "/users/:id" do |id|
     @user = User.get id
+    @purchases = @user.purchases if me?
     haml_mod :user
   end
 

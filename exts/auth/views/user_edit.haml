@@ -1,4 +1,4 @@
-%nav.inpage
+.subnav.right
   - link_to "back", "/users/#{@user.id}", class: "btn"
 
 %h1
@@ -8,5 +8,6 @@
 
 %form.new_form{ action: "/users/#{@user.id}", method: "post" }
   - form_method :put
-
+  - input @user, :email
+  - input @user, :address, label: "Indirizzo"
   - submit "Save"

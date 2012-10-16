@@ -1,8 +1,9 @@
 %h1 Nuovo acquisto
 
+- validations_for @purchase
 
 %form{ action: "/purchases", method: "post" }
-  - input @purchase, :amount
-  - input @purchase, :card_code
-  - input @purchase, :notes
+  - input @purchase, :amount,     label: "Ammontare (&euro;)"
+  - input @purchase, :card_code,  label: "Codice carta"
+  - input @purchase, :notes,      label: "Note"
   - submit "Registra"

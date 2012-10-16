@@ -1,4 +1,5 @@
 path = File.expand_path '../../', __FILE__
+PATH = path
 APP = "tencard"
 
 require "bundler/setup"

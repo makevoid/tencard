@@ -20,6 +20,9 @@ ul
 .clear
   clear: both
 
+.right
+  float: right
+
 $content_w: 85%
 
 $main: #90B // purple
@@ -51,6 +54,8 @@ a:hover
 .content
   width: $content_w
   margin: 20px auto 30px
+  h1
+    margin: 0 0 10px 0
 
 header
   width: $content_w
@@ -81,13 +86,29 @@ nav
     color: $alt
     background: $main + #333
 
+table
+  border: 1px solid #666
+  td, th
+    padding: 1px 12px
+  th
+    text-align: left
+    background: #CCC
+    border-bottom: 1px solid #666
+  td
+    background: #DDD
+  tr:nth-child(2n-1) td
+    background: #EEE
+
 .status
   float: right
   margin: 4px 0 0
+  .welcome
+    float: right
+    margin: 4px 5px 0 0
   span
     font-size: 0.85em
   form
-    display: inline-block
+    float: right
     font-size: 0.8em
 
 // forms
@@ -113,3 +134,20 @@ textarea
 
 .submit
   clear: right
+
+
+//
+
+.user
+  h1
+    display: inline-block
+  p
+    span
+      font-weight: bold
+      font-size: 0.85em
+
+.subnav
+  display: inline-block
+  margin: 6px 0 0 20px
+  a
+    font-size: 0.8em

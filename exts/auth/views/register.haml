@@ -1,11 +1,11 @@
-%h1.title_form Register
+%h1.title_form= shop? ? "Registra cliente" : "Iscriviti"
 
 - validations_for @user
 
 %form.new_form{ action: "/users", method: "post" }
   - input @user, :username
   - input @user, :email
-  - input @user, :address
+  - input @user, :address, label: "Indirizzo"
   - input @user, :password, type: "password"
-  - input @user, :password_confirmation, type: "password", label: "Confirm password"
-  - submit "Register"
+  - input @user, :password_confirmation, type: "password", label: "Conferma password"
+  - submit shop? ? "Registra" : "Iscrivimi"

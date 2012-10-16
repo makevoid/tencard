@@ -51,11 +51,11 @@ class TenCard < Sinatra::Base
   post "/sessions" do
     @user = User.first(username: params[:user][:username]) if params[:user]
     if @user && @user.password?(params[:user][:password])
-      flash[:notice] = "Logged in!"
+      flash[:notice] = "Accesso effettuato!"
       session[:user_id] = @user.id
       redirect "/"
     else
-      flash[:alert] = "Invalid username or password."
+      flash[:alert] = "Username o password non validi."
       haml_mod :login
     end
   end

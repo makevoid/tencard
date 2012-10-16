@@ -1,0 +1,16 @@
+- if admin?
+  %p
+    %span Ruolo:
+    #{@user.role} (##{@user.id})
+%p
+  %span Codice Carta:
+  = @user.card_code
+%p
+  %span Nome:
+  = @user.name
+%p
+  %span Email:
+  = @user.email
+%p
+  %span Indirizzo:
+  = @user.address

@@ -1,3 +1,11 @@
 %h1 Acquisti
 
-Lista degli acquisti effettuati nel tuo negozio
+%p
+  Lista degli acquisti effettuati
+  - if admin?
+    in tutti i negozi:
+  - else
+    nel tuo negozio:
+
+
+= partial :purchases
