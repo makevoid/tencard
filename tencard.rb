@@ -5,12 +5,16 @@ require "#{path}/config/env.rb"
 class TenCard < Sinatra::Base
   include Voidtools::Sinatra::ViewHelpers
 
+  set :session_secret, 'antanisblindacomesepiovesse'
+
   @@path = File.expand_path '../', __FILE__
 
+  require "#{@@path}/lib/app_helpers"
+  include AppHelpers
   require "#{@@path}/lib/form_helpers"
   include FormHelpers
 
-  def partial(name, value)
+  def partial(name, value={})
     locals = if value.is_a? Hash
       value
     else

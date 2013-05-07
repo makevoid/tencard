@@ -9,8 +9,4 @@ class TenCard < Sinatra::Base
     redirect "/users"
   end
 
-  get "/user/new" do
-    haml :users_new
-  end
-
 end

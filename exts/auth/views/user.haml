@@ -1,21 +1,17 @@
-
-
-#my_user
-
+%section.user
 
   %h1= @user.username
 
-  - if me?
-    %nav.inpage
-      - link_to "Edit profile", "/users/#{@user.id}/edit", class: "btn"
-
-  .card_info
-    Card: #{@user.card_code}
+  .subnav
+    - link_to "indietro", "/users", class: "btn" if admin?
+    - link_to "Edit profile", "/users/#{@user.id}/edit", class: "btn" if me?
 
   %div
-
-
     - if File.exist? "#{TenCard.root}/views/_ext_user.haml"
       = partial :ext_user
-
     .clear
+
+  - if me?
+    %section.purchases
+      %h1 Acquisti
+      = partial :purchases

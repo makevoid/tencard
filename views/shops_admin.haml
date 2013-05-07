@@ -1,0 +1,16 @@
+%h1 Shops
+
+%p Da questa schermata puoi amministrare le attivita' registrate al circuito 10Card.
+
+%table{ cellspacing: 0 }
+  %tr
+    %th Nome
+    %th Incassi
+    %th num.Vendite
+
+  - Shop.all.each do |shop|
+    %tr
+      %td
+        - link_to shop.name, "/shops/#{shop.id}"
+      %td= euro shop.sales_amount
+      %td= shop.sales_count

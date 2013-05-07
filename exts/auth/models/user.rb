@@ -1,19 +1,23 @@
 class User
   include DataMapper::Resource
 
-  ROLES = [ :guest, :member, :shop, :admin ]
+  CARD_CODE_LENGTH = 8
 
+  ROLES = [ :member, :shop, :admin ]
 
   property :id,         Serial
   property :username,   String, length: 100, required: true, unique: true
-  property :role,       Enum[*ROLES], default: :guest
+  property :role,       Enum[*ROLES], default: ROLES[0]
   property :password,   String, required: true, length: 5..50
   property :salt,       String
   property :card_code,  String
-  property :address,  String
-  property :email,  String
+  property :first_name, String#, required: true
+  property :last_name,  String#, required: true
+  property :address,    String
+  property :email,      String
 
-  has n, :purchases
+  has n, :purchases, child_key: [:client_id]
+  has n, :sales, "Purchase", child_key: [:shop_id]
 
   default_scope(:default).update order: :id.desc
 
@@ -25,11 +29,11 @@ class User
 
   # attributes
 
-  # filters
-
-  def self.guests
-    all role: "guest"
+  def name
+    "#{first_name} #{last_name}".strip
   end
+
+  # filters
 
   def self.members
     all role: "member"
@@ -44,6 +48,33 @@ class User
   end
 
   # actions
+
+  # actions (shop)
+
+  def register_purchase(client, amount, notes=nil)
+    self.sales.create amount: amount, notes: notes, client: client
+  end
+
+  # card code
+
+  before :create, :genereate_card_code
+
+  def genereate_card_code
+    return if self.card_code
+    code = ""
+    CARD_CODE_LENGTH.times{ code << rand(9).to_s }
+    self.card_code = code
+  end
+
+  # shop
+
+  def sales_amount
+    sales.sum(:amount) || 0
+  end
+
+  def sales_count
+    sales.count
+  end
 
   # authentication
 

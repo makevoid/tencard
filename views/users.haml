@@ -4,8 +4,9 @@
 
 %table{ cellspacing: 0 }
   %tr
+    %th Username
     %th Nome
     %th Carta
 
-  - User.guests.each do |user|
+  - User.members.each do |user|
     = partial :user, user

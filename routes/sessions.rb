@@ -37,7 +37,7 @@ class TenCard < Sinatra::Base
   end
 
   def me?
-    @user == current_user
+    @user == current_user || admin?
   end
 
   get "/login" do

@@ -1,0 +1,23 @@
+%table{ cellspacing: 0 }
+  %tr
+    - if admin?
+      %th Negozio
+    %th Importo
+    %th Sconto [#{Purchase::DISCOUNT}%]
+    - unless main_route == "users"
+      %th Cliente
+    %th Note
+
+  - @purchases.each do |purch|
+    - client = purch.client
+    %tr
+      - if admin?
+        - shop = purch.shop
+        %td
+          - link_to shop.name, "/shops/#{shop.id}"
+      %td= euro purch.amount
+      %td= euro purch.discount
+      - unless main_route == "users"
+        %td
+          - link_to client.username, "/users/#{client.id}"
+      %td= purch.notes

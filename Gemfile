@@ -8,6 +8,7 @@ gem "dm-mysql-adapter"
 gem "dm-migrations"
 gem "dm-validations"
 gem "dm-types"
+gem "dm-aggregates"
 
 gem "haml"
 gem "sass"
@@ -24,9 +25,10 @@ group :development do
 end
 
 group :test do
-  # gem "rspec-core"
-  # gem "rspec-mocks"
-  # gem "rspec-expectations"
+  gem "rspec-core"
+  gem "rspec-mocks"
+  gem "rspec-expectations"
+  gem "rack-test"
 end
 
 gem "voidtools"

@@ -2,19 +2,22 @@
   %head
     %title 10Card
     %link{ rel: "stylesheet", href: "/css/main.css" }
-  %body
+  %body{ class: body_class }
     #container
       %header
         .status
           - if logged_in?
-            %span Logged as:
-            %a{ href: "/users/#{current_user.id}" }= current_user.username
             %form{ action: "/logout", method: "post" }
               %input.btn{ type: "submit", value: "Logout" }
+            .welcome
+              %span
+                Benvenuto
+              %a{ href: "/users/#{current_user.id}" }= current_user.username
           - else
+            Effettua il
             %a.btn{ href: "/login" } Login
-            or
-            %a.btn{ href: "/register" } Register
+            o
+            %a.btn{ href: "/register" } Iscriviti
         .clear
         %h1
           - link_to "10Card", "/"
@@ -23,12 +26,12 @@
         - link_to "Home",         "/"
         - if shop?
           - link_to "Nuovo Acquisto",   "/purchases/new"
-          - link_to "Register a User",  "/register"
+          - link_to "Registrazione cliente",  "/register"
           - link_to "Acquisti",         "/purchases"
         - if admin?
-          - link_to "Users",            "/users"
-          - link_to "Shops (admin)",    "/shops_admin"
-        - link_to "Shops",              "/shops"
+          - link_to "Utenti",            "/users"
+          - link_to "Negozi (admin)",    "/shops_admin"
+        - link_to "Negozi",              "/shops"
 
         %h1.logo
       %section.content= yield
